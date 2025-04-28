@@ -176,6 +176,14 @@ img { max-width: 100%; height: auto; display: block; }
      margin-right: auto;
  }
 
+/* Force centering specifically on paragraphs inside footer container */
+.main-footer .container p {
+     text-align: center !important; /* <<< Add !important */
+     /* Keep other styles for footer paragraphs if needed */
+     margin-bottom: 0.4rem;
+     line-height: 1.6;
+}
+
 /* --- Animation --- */
 .fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .fade-in-section.visible { opacity: 1; transform: translateY(0); }
