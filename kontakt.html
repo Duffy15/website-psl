@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Skontaktuj się z PSL Krotoszyn - dane kontaktowe, adres siedziby, formularz kontaktowy. Zapraszamy do kontaktu.">
+    <title>Kontakt - PSL Krotoszyn</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-lights"></div>
+    <div class="page-content-wrapper">
+        <header class="main-header">
+             <nav class="main-nav container">
+                <div class="logo"> <a href="index.html"><i class="ph ph-clover logo-icon"></i> PSL Krotoszyn</a></div>
+                <ul>
+                   <li><a href="index.html">Strona Główna</a></li>
+                    <li><a href="aktualnosci.html">Aktualności</a></li>
+                    <li><a href="franciszek-marszalek.html">Franciszek Marszałek</a></li>
+                    <li><a href="galeria.html">Galeria zdjęć</a></li>
+                    <li><a href="prasa.html">Przegląd prasy</a></li>
+                    <li><a href="jak-wstapic.html">Jak wstąpić?</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+                <button class="hamburger-menu" aria-label="Toggle Menu" aria-expanded="false"><i class="ph ph-list"></i></button>
+            </nav>
+        </header>
+         <div class="mobile-nav-overlay">
+             <button class="close-nav" aria-label="Close Menu"><i class="ph ph-x"></i></button>
+            <nav class="overlay-nav">
+                 <ul>
+                    <li><a href="index.html">Strona Główna</a></li>
+                    <li><a href="aktualnosci.html">Aktualności</a></li>
+                    <li><a href="franciszek-marszalek.html">Franciszek Marszałek</a></li>
+                    <li><a href="galeria.html">Galeria zdjęć</a></li>
+                    <li><a href="prasa.html">Przegląd prasy</a></li>
+                    <li><a href="jak-wstapic.html">Jak wstąpić?</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <main>
+            <section class="page-title fade-in-section">
+                <div class="container">
+                    <h1>Kontakt</h1>
+                    <p>Masz pytania? Chcesz dołączyć? Skontaktuj się z nami!</p>
+                </div>
+            </section>
+
+            <section id="contact-details" class="contact-info-section fade-in-section">
+                <div class="container">
+                    <div class="contact-columns">
+                        <div class="contact-info">
+                            <h2>Dane Kontaktowe</h2>
+                            <p><i class="ph ph-map-pin"></i> <span>[Wstaw Adres Siedziby]<br>Krotoszyn, [Kod Pocztowy]</span></p>
+                            <p><i class="ph ph-phone"></i> <a href="tel:[Wstaw Numer Telefonu]">[Wstaw Numer Telefonu]</a></p>
+                            <p><i class="ph ph-envelope"></i> <a href="mailto:[Wstaw Adres Email]">[Wstaw Adres Email]</a></p>
+                            <h3>Znajdź nas na mapie:</h3>
+                            <div class="map-embed">
+                                <iframe src="[Wstaw URL Mapy Google lub OpenStreetMap]" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="contact-form-container">
+                            <h2>Formularz Kontaktowy</h2>
+                            <form id="contact-form" class="contact-form" action="https://www.studieportalen.dk/forums/thread.aspx?id=1731786" method="POST">
+                                <div class="form-group">
+                                    <label for="name">Imię i Nazwisko:</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Adres Email:</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="subject">Temat:</label>
+                                    <input type="text" id="subject" name="subject">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Wiadomość:</label>
+                                    <textarea id="message" name="message" rows="6" required></textarea>
+                                </div>
+                                <button type="submit" class="cta-button primary">Wyślij Wiadomość</button>
+                                <p class="form-notice">Odpowiemy najszybciej jak to możliwe.</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="main-footer fade-in-section">
+            <div class="container">
+                <p>PSL Krotoszyn - Polskie Stronnictwo Ludowe</p>
+                <p>Adres: [Wstaw Adres Siedziby], Krotoszyn | Email: [Wstaw Email] | Tel: [Wstaw Telefon]</p>
+                <p>© <span id="currentYear"></span> PSL Krotoszyn. Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </footer>
+    </div> <script src="script.js"></script>
+</body>
+</html>
