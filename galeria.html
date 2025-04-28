@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galeria zdjęć z wydarzeń i działalności PSL Krotoszyn. Zobacz nas w akcji!">
+    <title>Galeria Zdjęć - PSL Krotoszyn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <div class="background-lights"></div>
+    <div class="page-content-wrapper">
+        <header class="main-header">
+            <nav class="main-nav container">
+                <div class="logo"> <a href="index.html"><i class="ph ph-clover logo-icon"></i> PSL Krotoszyn</a></div>
+                <ul>
+                   <li><a href="index.html">Strona Główna</a></li>
+                    <li><a href="aktualnosci.html">Aktualności</a></li>
+                    <li><a href="franciszek-marszalek.html">Franciszek Marszałek</a></li>
+                    <li><a href="galeria.html">Galeria zdjęć</a></li>
+                    <li><a href="prasa.html">Przegląd prasy</a></li>
+                    <li><a href="jak-wstapic.html">Jak wstąpić?</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+                <button class="hamburger-menu" aria-label="Toggle Menu" aria-expanded="false"><i class="ph ph-list"></i></button>
+            </nav>
+        </header>
+         <div class="mobile-nav-overlay">
+             <button class="close-nav" aria-label="Close Menu"><i class="ph ph-x"></i></button>
+            <nav class="overlay-nav">
+                 <ul>
+                   <li><a href="index.html">Strona Główna</a></li>
+                    <li><a href="aktualnosci.html">Aktualności</a></li>
+                    <li><a href="franciszek-marszalek.html">Franciszek Marszałek</a></li>
+                    <li><a href="galeria.html">Galeria zdjęć</a></li>
+                    <li><a href="prasa.html">Przegląd prasy</a></li>
+                    <li><a href="jak-wstapic.html">Jak wstąpić?</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <main>
+            <section class="page-title fade-in-section">
+                <div class="container">
+                    <h1>Galeria Zdjęć</h1>
+                    <p>Fotorelacje z naszych spotkań, wydarzeń i działań w regionie.</p>
+                </div>
+            </section>
+
+            <section id="gallery" class="fade-in-section">
+                <div class="container">
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <a href="images/gallery/large/image1.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 1">
+                                <img src="images/gallery/thumbnails/image1-thumb.jpg" alt="Opis zdjęcia 1">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                             <a href="images/gallery/large/image2.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 2">
+                                <img src="images/gallery/thumbnails/image2-thumb.jpg" alt="Opis zdjęcia 2">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                             <a href="images/gallery/large/image3.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 3">
+                                <img src="images/gallery/thumbnails/image3-thumb.jpg" alt="Opis zdjęcia 3">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                             <a href="images/gallery/large/image4.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 4">
+                                <img src="images/gallery/thumbnails/image4-thumb.jpg" alt="Opis zdjęcia 4">
+                            </a>
+                        </div>
+                         <div class="gallery-item">
+                             <a href="images/gallery/large/image5.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 5">
+                                <img src="images/gallery/thumbnails/image5-thumb.jpg" alt="Opis zdjęcia 5">
+                            </a>
+                        </div>
+                         <div class="gallery-item">
+                             <a href="images/gallery/large/image6.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 6">
+                                <img src="images/gallery/thumbnails/image6-thumb.jpg" alt="Opis zdjęcia 6">
+                            </a>
+                        </div>
+                        </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer fade-in-section">
+             <div class="container">
+                <p>PSL Krotoszyn - Polskie Stronnictwo Ludowe</p>
+                <p>Adres: [Wstaw Adres Siedziby], Krotoszyn | Email: [Wstaw Email] | Tel: [Wstaw Telefon]</p>
+                <p>© <span id="currentYear"></span> PSL Krotoszyn. Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </footer>
+    </div> <script src="script.js"></script>
+    </body>
+</html>
