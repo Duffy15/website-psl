@@ -178,10 +178,15 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* Force centering specifically on paragraphs inside footer container */
 .main-footer .container p {
-     text-align: center !important; /* <<< Add !important */
-     /* Keep other styles for footer paragraphs if needed */
+     text-align: center !important; /* Keep this - centers text within the <p> */
      margin-bottom: 0.4rem;
      line-height: 1.6;
+
+     /* --- ADD THESE LINES to center the <p> block itself --- */
+     max-width: 65ch; /* Optional: Limit width for readability (adjust as needed) */
+     margin-left: auto;
+     margin-right: auto;
+     /* --- End added lines --- */
 }
 
 /* --- Animation --- */
