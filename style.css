@@ -152,9 +152,29 @@ img { max-width: 100%; height: auto; display: block; }
 .cta-section p { max-width: 65ch; margin-left: auto; margin-right: auto; }
 
 /* --- Footer --- */
-.main-footer { background-color: #2c3e50; color: rgba(255, 255, 255, 0.7); text-align: center; padding: 30px 0; font-size: 0.9rem; margin-top: auto; }
-.main-footer p { margin-bottom: 0.5rem; }
-.main-footer .container { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; }
+.main-footer {
+    background-color: #2c3e50; /* Keep background color */
+    color: rgba(255, 255, 255, 0.7); /* Keep text color */
+    text-align: center; /* Keep text centered */
+    padding: 0; /* REMOVE top/bottom padding from the main element */
+    font-size: 0.85rem; /* Optional: Slightly smaller font size */
+    margin-top: auto; /* Keep pushing footer down */
+}
+.main-footer p {
+     margin-bottom: 0.4rem; /* Optional: Slightly reduce space between lines */
+     line-height: 1.6; /* Ensure readability with smaller size */
+}
+.main-footer .container {
+     border-top: 1px solid rgba(255, 255, 255, 0.1); /* Keep top border */
+     /* REDUCE vertical padding significantly */
+     padding-top: 20px;    /* Was 30px */
+     padding-bottom: 20px; /* Add some bottom padding */
+     /* Keep container centering */
+     width: 90%;
+     max-width: var(--container-width);
+     margin-left: auto;
+     margin-right: auto;
+ }
 
 /* --- Animation --- */
 .fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
