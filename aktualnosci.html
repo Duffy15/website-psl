@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aktualności i wydarzenia PSL Krotoszyn. Bądź na bieżąco z działaniami Polskiego Stronnictwa Ludowego w Krotoszynie.">
     <title>Aktualności - PSL Krotoszyn</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <link rel="stylesheet" href="style.css">
-</head>
+
+    </head>
 <body>
-    <div class="background-lights"></div>
     <div class="page-content-wrapper">
         <header class="main-header">
             <nav class="main-nav container">
@@ -29,7 +34,7 @@
                 <button class="hamburger-menu" aria-label="Toggle Menu" aria-expanded="false"><i class="ph ph-list"></i></button>
             </nav>
         </header>
-        <div class="mobile-nav-overlay">
+         <div class="mobile-nav-overlay">
              <button class="close-nav" aria-label="Close Menu"><i class="ph ph-x"></i></button>
             <nav class="overlay-nav">
                  <ul>
@@ -40,7 +45,7 @@
                     <li><a href="prasa.html">Przegląd prasy</a></li>
                     <li><a href="jak-wstapic.html">Jak wstąpić?</a></li>
                     <li><a href="kontakt.html">Kontakt</a></li>
-                </ul>
+                 </ul>
             </nav>
         </div>
 
@@ -84,36 +89,29 @@
             </section>
         </main>
 
-<section class="visitor-stats fade-in-section">
-    <div class="container">
-        <h3 class="stats-title">Odwiedziło nas:</h3> <p class="stats-total"> <span class="stat-total-label">Łącznie:</span>
-            <span class="stat-total-count">[całkowita liczba]</span> </p>
-        <div class="stats-grid"> <div class="stat-item">
-                <span class="stat-label">DZIŚ</span> <span class="stat-count">[liczba]</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">WCZORAJ</span>
-                <span class="stat-count">[liczba]</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">W TYM TYGODNIU</span>
-                <span class="stat-count">[liczba]</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">W TYM MIESIĄCU</span>
-                <span class="stat-count">[liczba]</span>
-            </div>
-        </div>
-    </div>
-</section>
-        
-        <footer class="main-footer fade-in-section">
+        <section class="visitor-stats fade-in-section">
             <div class="container">
+                <h3 class="stats-title">Odwiedziło nas:</h3>
+                <p class="stats-total">
+                    <span class="stat-total-label">Łącznie:</span>
+                    <span class="stat-total-count">[całkowita liczba]</span>
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item"><span class="stat-label">DZIŚ</span><span class="stat-count">[liczba]</span></div>
+                    <div class="stat-item"><span class="stat-label">WCZORAJ</span><span class="stat-count">[liczba]</span></div>
+                    <div class="stat-item"><span class="stat-label">W TYM TYGODNIU</span><span class="stat-count">[liczba]</span></div>
+                    <div class="stat-item"><span class="stat-label">W TYM MIESIĄCU</span><span class="stat-count">[liczba]</span></div>
+                </div>
+            </div>
+        </section>
+        <footer class="main-footer fade-in-section">
+             <div class="container">
                 <p>PSL Krotoszyn - Polskie Stronnictwo Ludowe</p>
-                <p>Adres: ul. Kobylińska 10a, Krotoszyn | Email: [Wstaw Email] | Tel: 62 725 28 80</p>
+                <p>Adres: [Wstaw Adres Siedziby], Krotoszyn | Email: [Wstaw Email] | Tel: [Wstaw Telefon]</p>
                 <p>© <span id="currentYear"></span> PSL Krotoszyn. Wszelkie prawa zastrzeżone.</p>
             </div>
         </footer>
-    </div> <script src="script.js"></script>
+    </div> <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
