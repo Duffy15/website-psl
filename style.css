@@ -298,8 +298,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .stat-total-count {
-    /* display: block; */ /* <<< REMOVE this line if you want label & number on same line */
-    /* margin-top: 5px; */ /* <<< REMOVE this line if you want label & number on same line */
+    display: block;  /* <<< REMOVE this line if you want label & number on same line */
+    margin-top: 5px;  /* <<< REMOVE this line if you want label & number on same line */
     font-weight: 700;
     font-size: 2rem; /* Make total count large */
     color: var(--psl-green-dark);
