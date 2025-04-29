@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
     </head>
 <body>
@@ -33,14 +34,14 @@
              <button class="close-nav" aria-label="Close Menu"><i class="ph ph-x"></i></button>
             <nav class="overlay-nav">
                  <ul>
-                   <li><a href="index.html">Strona Główna</a></li>
+                    <li><a href="index.html">Strona Główna</a></li>
                     <li><a href="aktualnosci.html">Aktualności</a></li>
                     <li><a href="franciszek-marszalek.html">Franciszek Marszałek</a></li>
                     <li><a href="galeria.html">Galeria zdjęć</a></li>
                     <li><a href="prasa.html">Przegląd prasy</a></li>
                     <li><a href="jak-wstapic.html">Jak wstąpić?</a></li>
                     <li><a href="kontakt.html">Kontakt</a></li>
-                </ul>
+                 </ul>
             </nav>
         </div>
 
@@ -48,7 +49,7 @@
             <section class="page-title fade-in-section">
                 <div class="container">
                     <h1>Galeria Zdjęć</h1>
-                    <p>Fotorelacje z naszych spotkań, wydarzeń i działań w regionie.</p>
+                    <p>Fotorelacje z naszych spotkań, wydarzeń i działań w regionie Krotoszyna.</p>
                 </div>
             </section>
 
@@ -56,33 +57,43 @@
                 <div class="container">
                     <div class="gallery-grid">
                         <div class="gallery-item">
-                            <a href="images/gallery/large/image1.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 1">
+                            <a href="images/gallery/large/image1.jpg" data-title="Opis zdjęcia 1">
                                 <img src="images/gallery/thumbnails/image1-thumb.jpg" alt="Opis zdjęcia 1">
                             </a>
                         </div>
                         <div class="gallery-item">
-                             <a href="images/gallery/large/image2.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 2">
+                             <a href="images/gallery/large/image2.jpg" data-title="Opis zdjęcia 2">
                                 <img src="images/gallery/thumbnails/image2-thumb.jpg" alt="Opis zdjęcia 2">
                             </a>
                         </div>
                         <div class="gallery-item">
-                             <a href="images/gallery/large/image3.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 3">
+                             <a href="images/gallery/large/image3.jpg" data-title="Opis zdjęcia 3">
                                 <img src="images/gallery/thumbnails/image3-thumb.jpg" alt="Opis zdjęcia 3">
                             </a>
                         </div>
                         <div class="gallery-item">
-                             <a href="images/gallery/large/image4.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 4">
+                             <a href="images/gallery/large/image4.jpg" data-title="Opis zdjęcia 4">
                                 <img src="images/gallery/thumbnails/image4-thumb.jpg" alt="Opis zdjęcia 4">
                             </a>
                         </div>
                          <div class="gallery-item">
-                             <a href="images/gallery/large/image5.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 5">
+                             <a href="images/gallery/large/image5.jpg" data-title="Opis zdjęcia 5">
                                 <img src="images/gallery/thumbnails/image5-thumb.jpg" alt="Opis zdjęcia 5">
                             </a>
                         </div>
                          <div class="gallery-item">
-                             <a href="images/gallery/large/image6.jpg" data-lightbox="psl-gallery" data-title="Opis zdjęcia 6">
+                             <a href="images/gallery/large/image6.jpg" data-title="Opis zdjęcia 6">
                                 <img src="images/gallery/thumbnails/image6-thumb.jpg" alt="Opis zdjęcia 6">
+                            </a>
+                        </div>
+                         <div class="gallery-item">
+                             <a href="images/gallery/large/image7.jpg" data-title="Opis zdjęcia 7">
+                                <img src="images/gallery/thumbnails/image7-thumb.jpg" alt="Opis zdjęcia 7">
+                            </a>
+                        </div>
+                         <div class="gallery-item">
+                             <a href="images/gallery/large/image8.jpg" data-title="Opis zdjęcia 8">
+                                <img src="images/gallery/thumbnails/image8-thumb.jpg" alt="Opis zdjęcia 8">
                             </a>
                         </div>
                         </div>
@@ -90,36 +101,29 @@
             </section>
         </main>
 
-<section class="visitor-stats fade-in-section">
-    <div class="container">
-        <h3 class="stats-title">Odwiedziło nas:</h3> <p class="stats-total"> <span class="stat-total-label">Łącznie:</span>
-            <span class="stat-total-count">[całkowita liczba]</span> </p>
-        <div class="stats-grid"> <div class="stat-item">
-                <span class="stat-label">DZIŚ</span> <span class="stat-count">[liczba]</span>
+        <section class="visitor-stats fade-in-section">
+            <div class="container">
+                <h3 class="stats-title">Odwiedziło nas:</h3>
+                <p class="stats-total">
+                    <span class="stat-total-label">Łącznie:</span>
+                    <span class="stat-total-count">[całkowita liczba]</span>
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item"><span class="stat-label">DZIŚ</span><span class="stat-count">[liczba]</span></div>
+                    <div class="stat-item"><span class="stat-label">WCZORAJ</span><span class="stat-count">[liczba]</span></div>
+                    <div class="stat-item"><span class="stat-label">W TYM TYGODNIU</span><span class="stat-count">[liczba]</span></div>
+                    <div class="stat-item"><span class="stat-label">W TYM MIESIĄCU</span><span class="stat-count">[liczba]</span></div>
+                </div>
             </div>
-            <div class="stat-item">
-                <span class="stat-label">WCZORAJ</span>
-                <span class="stat-count">[liczba]</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">W TYM TYGODNIU</span>
-                <span class="stat-count">[liczba]</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">W TYM MIESIĄCU</span>
-                <span class="stat-count">[liczba]</span>
-            </div>
-        </div>
-    </div>
-</section>
-        
+        </section>
         <footer class="main-footer fade-in-section">
              <div class="container">
                 <p>PSL Krotoszyn - Polskie Stronnictwo Ludowe</p>
-                <p>Adres: ul. Kobylińska 10a, Krotoszyn | Email: [Wstaw Email] | Tel: 62 725 28 80</p>
+                <p>Adres: [Wstaw Adres Siedziby], Krotoszyn | Email: [Wstaw Email] | Tel: [Wstaw Telefon]</p>
                 <p>© <span id="currentYear"></span> PSL Krotoszyn. Wszelkie prawa zastrzeżone.</p>
             </div>
         </footer>
-    </div> <script src="script.js"></script>
+    </div> <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
     </body>
 </html>
