@@ -195,9 +195,11 @@ img { max-width: 100%; height: auto; display: block; }
 
 .slider-track {
     display: flex;
-    width: calc(10 * (180px + 20px)); /* 10 items * (item width + gap) */
-    animation: scrollLeft 45s linear infinite; /* Adjust duration for speed */
-    will-change: transform;
+    width: calc(10 * (180px + 20px)); /* 2000px */
+    /* animation: scrollLeft 45s linear infinite; */ /* <<< REMOVE THIS LINE */
+    will-change: transform; /* Keep this */
+    /* Ensure transform starts at 0 initially */
+    transform: translateX(0px);
 }
 
 .slider-track:hover {
@@ -252,20 +254,6 @@ img { max-width: 100%; height: auto; display: block; }
 .slider-item a:hover .slider-caption {
     opacity: 1;
 }
-
-
-/* --- Keyframe Animation for Scrolling --- */
-@keyframes scrollLeft {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        /* Translate left by the width of the first 5 items + gaps */
-        transform: translateX(calc(-5 * (180px + 20px))); /* -1000px */
-    }
-}
-/* --- END: Featured Slider Styles --- */
-
 
 /* --- START: Visitor Stats Styles (Enhanced v2) --- */
 .visitor-stats {
