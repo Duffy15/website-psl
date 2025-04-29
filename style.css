@@ -187,7 +187,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .slider-track-container {
     width: 100%;
-    overflow: hidden; /* Hide overflowing items */
+    /* overflow: hidden; /* Hide overflowing items */
     position: relative; /* For potential absolute positioning of controls later */
     /* -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); /* Optional: fade edges */
     /* mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); /* Optional: fade edges */
