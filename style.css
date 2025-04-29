@@ -1,9 +1,10 @@
 /* ======================================== */
-/* style.css - PSL Krotoszyn (v7 - Subpages & Style Updates) */
+/* style.css - PSL Krotoszyn (v9 - Final Swiper Integration & Styles) */
 /* ======================================== */
 
 /* --- Root Variables --- */
 :root {
+    /* Color Palette */
     --psl-green: #1E8449; /* Primary PSL Green */
     --psl-green-dark: #145A32; /* Darker shade for hover */
     --white: #FFFFFF;
@@ -13,15 +14,45 @@
     --light-text: #FFFFFF; /* Text on dark bg */
     --link-color: #1A5276; /* A contrasting link color */
 
-    --font-heading: 'Inter', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    /* Fonts */
+    --font-heading: 'Inter', sans-serif; /* Using Poppins */
+    --font-body: 'Inter', sans-serif;    /* Using Poppins */
 
+    /* Layout */
     --container-width: 1140px;
-    --header-height: 70px;
-    --transition-speed: 0.3s ease;
+    --header-height: 70px; /* Header height */
 
-    /* Ambient Light Variables (Keep if using background effect) */
-     /* ... background light vars ... */
+    /* Transitions & Animations */
+    --transition-speed: 0.3s ease;
+    --animation-delay: 0.1s;
+    --header-transition-speed: 0.4s ease-out;
+    --overlay-transition-speed: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    --light-fade-duration: 4s; /* For background lights if used */
+
+    /* Other Colors */
+    --color-card-bg-dark: rgba(31, 43, 62, 0.65); /* Example, adjust if needed */
+    --glass-blur: 8px; /* Example, adjust if needed */
+    --nav-bg: rgba(30, 132, 73, 0.9); /* Slightly transparent green nav */
+    --footer-bg: #2c3e50; /* Dark footer */
+    --button-tertiary-bg: rgba(255, 255, 255, 0.1);
+    --button-tertiary-text: var(--light-text);
+    --button-tertiary-hover-bg: rgba(255, 255, 255, 0.2);
+    --section-separator-color: rgba(0, 0, 0, 0.08); /* Lighter separator */
+    --overlay-bg: #1E8449; /* Match header */
+    --color-accent: var(--psl-green); /* Use green as main accent */
+
+    /* Variables needed for background lights JS (if re-enabled later) */
+    --light-blue-opacity: 0;
+    --light-pink-opacity: 0;
+    --light-blue-x: 10%; --light-blue-y: 10%; --light-blue-size: 45vmax;
+    --light-pink-x: 90%; --light-pink-y: 90%; --light-pink-size: 45vmax;
+    --light-color-blue: rgba(0, 123, 255, 0.65);
+    --light-color-pink: rgba(233, 69, 96, 0.65);
+
+    /* Variables for interactive logo JS (if re-enabled later) */
+     --logo-mouse-x: 50%;
+     --logo-mouse-y: 50%;
+     /* --logo-light-color: var(--light-color-blue); */
 }
 
 /* --- Basic Reset & Defaults --- */
@@ -31,18 +62,34 @@ body {
     font-family: var(--font-body);
     color: var(--dark-text);
     line-height: 1.7;
-    background-color: var(--white); /* Main background color */
+    background-color: var(--white); /* Main page background */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    /* Background managed by .background-lights if used */
-    /* background: transparent !important; */
+    overflow-x: hidden;
+    /* background: transparent !important; */ /* Only needed if using .background-lights */
 }
 
-/* --- Background Layer (Remove if not used, keep if used) --- */
-.background-lights { position: fixed; /* ... etc ... */ }
-.background-lights::before, .background-lights::after { /* ... etc ... */ }
+/* --- Background Layer (Optional - Static Black Version) --- */
+/* If you want the ambient lights, uncomment pseudo-elements and re-integrate JS */
+.background-lights {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background-color: #000000; /* Solid Black */
+    overflow: hidden;
+}
+.background-lights::before,
+.background-lights::after {
+     content: "";
+     position: absolute;
+     inset: 0;
+     pointer-events: none;
+     background-repeat: no-repeat;
+     /* Keep lights hidden if JS control is removed */
+     opacity: 0;
+     /* transition: opacity var(--light-fade-duration) ease-in-out; */ /* Uncomment if using JS */
+}
+/* --- END Background Layer --- */
+
 
 /* --- Page Wrapper & Layout --- */
 .page-content-wrapper {
@@ -51,10 +98,11 @@ body {
     display: flex;
     flex-direction: column;
     padding-top: var(--header-height); /* Offset for fixed header */
-     /* Add position/z-index ONLY if using .background-lights div */
-    /* position: relative; */
-    /* z-index: 1; */
-    /* background-color: transparent; */
+    /* Add position/z-index only if using .background-lights */
+     position: relative;
+     z-index: 1;
+     background-color: transparent; /* Needed if background-lights is active */
+    min-height: 100vh; /* Pushes footer down */
 }
 
 main { flex-grow: 1; }
@@ -66,60 +114,65 @@ h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 1.5rem; }
 h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); text-align: center; margin-bottom: 2.5rem; font-weight: 700; }
 h3 { font-size: clamp(1.3rem, 3vw, 1.6rem); margin-bottom: 0.75rem; font-weight: 600; color: var(--dark-text); }
 h4 { font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; }
-p { margin-bottom: 1.2rem; max-width: 65ch; font-weight: 400; }
-a { color: var(--link-color); text-decoration: none; transition: color var(--transition-speed); }
+p { margin-bottom: 1.2rem; max-width: 65ch; font-weight: 400; color: var(--dark-text); }
+a { color: var(--psl-green); text-decoration: none; transition: color var(--transition-speed); }
 a:hover, a:focus { text-decoration: underline; color: var(--psl-green-dark); }
 section { padding: 60px 0; }
 section:nth-child(even) { background-color: var(--light-grey); }
 img { max-width: 100%; height: auto; display: block; }
 
 /* --- Header & Navigation --- */
-.main-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: var(--psl-green); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); height: var(--header-height); }
+.main-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: var(--nav-bg); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); height: var(--header-height); transition: transform var(--header-transition-speed); }
+.header-hidden { transform: translateY(-100%); }
 .main-nav { display: flex; justify-content: space-between; align-items: center; height: 100%; }
 
 .logo a {
     color: var(--light-text);
-    font-weight: 700; /* Bold logo text */
+    font-weight: 700;
     font-size: 1.4rem;
     text-decoration: none;
-    display: inline-flex; /* Align icon and text */
+    display: inline-flex;
     align-items: center;
-    gap: 0.4em; /* Space between icon and text */
+    gap: 0.5em;
 }
 .logo a:hover { text-decoration: none; opacity: 0.9; }
 .logo-icon {
-    font-size: 1.2em; /* Adjust icon size relative to text */
-    /* color: var(--light-text); Inherited */
-    display: inline-block; /* Ensure it aligns nicely */
-    line-height: 1; /* Prevent extra space */
-    vertical-align: middle; /* Optional fine-tuning */
+    font-size: 1.2em;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+    color: var(--light-text);
 }
 
 .main-nav > ul { list-style: none; display: flex; margin: 0; padding: 0; }
-.main-nav > ul li { margin-left: 20px; } /* Reduced spacing slightly */
+.main-nav > ul li { margin-left: 20px; }
 .main-nav > ul li a {
     color: var(--light-text);
     font-weight: 600;
-    font-size: 0.9rem; /* <<< REDUCED FONT SIZE */
+    font-size: 0.9rem; /* Smaller nav font */
     text-decoration: none;
     padding: 10px 5px;
     border-bottom: 2px solid transparent;
-    transition: border-color var(--transition-speed), color var(--transition-speed);
+    transition: border-color var(--transition-speed), color var(--transition-speed), opacity var(--transition-speed);
+    opacity: 0.9;
 }
-.main-nav > ul li a:hover, .main-nav > ul li a:focus, .main-nav > ul li a.active { border-bottom-color: var(--white); }
+.main-nav > ul li a:hover, .main-nav > ul li a:focus, .main-nav > ul li a.active {
+    border-bottom-color: var(--white);
+    opacity: 1;
+}
 
-/* Hamburger & Mobile Nav (Styles mostly unchanged, check icons) */
+/* Hamburger & Mobile Nav */
 .hamburger-menu { display: none; background: none; border: none; padding: 0; cursor: pointer; }
-.hamburger-menu i.ph { font-size: 28px; color: var(--light-text); display: block; } /* Target Phosphor icon */
-.mobile-nav-overlay { position: fixed; top: 0; right: 0; width: 300px; max-width: 85%; height: 100vh; background-color: var(--psl-green); z-index: 1100; transform: translateX(100%); transition: transform 0.4s ease-out; box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2); padding: calc(var(--header-height) + 20px) 30px 30px; overflow-y: auto; display: flex; flex-direction: column; }
+.hamburger-menu i.ph { font-size: 28px; color: var(--light-text); display: block; }
+.mobile-nav-overlay { position: fixed; top: 0; right: 0; width: 300px; max-width: 85%; height: 100vh; background-color: var(--overlay-bg); z-index: 1100; transform: translateX(100%); transition: transform 0.4s ease-out; box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2); padding: calc(var(--header-height) + 20px) 30px 30px; overflow-y: auto; display: flex; flex-direction: column; }
 .mobile-nav-overlay.overlay-active { transform: translateX(0); }
 .close-nav { position: absolute; top: 15px; right: 25px; background: none; border: none; padding: 10px; margin: -10px; cursor: pointer; }
-.close-nav i.ph { font-size: 24px; color: var(--light-text); display: block; } /* Target Phosphor icon */
+.close-nav i.ph { font-size: 24px; color: var(--light-text); display: block; }
 .overlay-nav ul { list-style: none; padding: 0; margin: 0; }
 .overlay-nav ul li { border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
 .overlay-nav ul li:last-child { border-bottom: none; }
 .overlay-nav ul li a { display: block; padding: 15px 0; color: var(--light-text); text-decoration: none; font-size: 1.1rem; font-weight: 600; transition: color var(--transition-speed); }
-.overlay-nav ul li a:hover { color: rgba(255, 255, 255, 0.8); }
+.overlay-nav ul li a:hover, .overlay-nav ul li a.active { color: rgba(255, 255, 255, 0.8); }
 
 /* --- Buttons --- */
 .cta-button { display: inline-block; padding: 10px 25px; border-radius: 5px; font-weight: 600; text-decoration: none; text-align: center; cursor: pointer; transition: background-color var(--transition-speed), color var(--transition-speed), transform var(--transition-speed); border: 2px solid transparent; font-size: 1rem; margin: 5px; }
@@ -132,30 +185,42 @@ img { max-width: 100%; height: auto; display: block; }
 .cta-button.large { padding: 15px 35px; font-size: 1.1rem; }
 
 /* --- Hero Section --- */
-/* --- Hero Section --- */
-.hero-section {
-    background-color: var(--light-grey);
-    text-align: center;
-    /* Make section fill the viewport height */
-    min-height: 90vh; /* <<< CHANGE 60vh to 100vh */
-
-    display: flex; /* Keep */
-    align-items: center; /* Keep (Vertical Center) */
-    justify-content: center; /* Keep (Horizontal Center) */
-    border-bottom: none;
-
-    /* Adjust padding: Remove vertical, keep horizontal */
-    padding-top: 0;    /* <<< CHANGE (was 60px) */
-    padding-bottom: 0; /* <<< CHANGE (was 60px) */
-    padding-left: 5%;  /* Keep */
-    padding-right: 5%; /* Keep */
-}
-
-.hero-content {
-    max-width: 800px;
-    /* Content inside hero */
-}.hero-content h1 { color: var(--psl-green); }
+.hero-section { background-color: var(--light-grey); text-align: center; min-height: 100vh; display: flex; align-items: center; justify-content: center; border-bottom: none; padding: 0 5%; }
+.hero-content h1 { color: var(--psl-green); }
 .hero-content p { font-size: 1.15rem; margin-bottom: 2rem; max-width: 60ch; margin-left: auto; margin-right: auto; color: #555; }
+
+/* --- START: Featured Slider Styles (Swiper) --- */
+.featured-slider {
+    background-color: var(--white);
+    padding: 50px 0;
+    border-bottom: 1px solid var(--medium-grey);
+}
+/* Swiper Container - Limit width */
+.featured-swiper-container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    overflow: hidden; /* Keep overflow for Swiper */
+    position: relative;
+}
+/* Style individual slides using slider-item class */
+.slider-item { /* Applied to .swiper-slide elements */
+    height: 140px;
+    width: 180px; /* Fixed width for slidesPerView: 'auto' */
+    background-color: var(--medium-grey);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; /* Ensure padding/border included in width */
+}
+.slider-item a { display: block; width: 100%; height: 100%; }
+.slider-item img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+.slider-item a:hover img { transform: scale(1.05); }
+/* --- END: Featured Slider Styles --- */
+
 
 /* --- News Preview Section --- */
 .news-preview { background-color: var(--white); }
@@ -172,326 +237,58 @@ img { max-width: 100%; height: auto; display: block; }
 .cta-section { background-color: var(--light-grey); text-align: center; }
 .cta-section p { max-width: 65ch; margin-left: auto; margin-right: auto; }
 
-/* ======================================== */
-/* style.css - PSL Krotoszyn (v8 - Counter & Slider) */
-/* ======================================== */
 
-/* ... (Keep all existing CSS from :root down to Hero Section) ... */
-
-/* --- START: Featured Slider Styles --- */
-.featured-slider {
-    background-color: var(--light-grey); /* Or white, or none */
-    padding: 40px 0; /* Adjust vertical padding */
-    border-bottom: 1px solid var(--medium-grey); /* Optional separator */
-}
-
-.slider-track-container {
-    width: 100%;
-    /* overflow: hidden; /* Hide overflowing items */
-    position: relative; /* For potential absolute positioning of controls later */
-    /* -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); /* Optional: fade edges */
-    /* mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); /* Optional: fade edges */
-}
-
-.slider-track {
-    display: flex;
-    width: calc(10 * (180px + 20px)); /* 2000px */
-    /* animation: scrollLeft 45s linear infinite; */ /* <<< REMOVE THIS LINE */
-    will-change: transform; /* Keep this */
-    /* Ensure transform starts at 0 initially */
-    transform: translateX(0px);
-}
-
-.slider-track:hover {
-    animation-play-state: paused; /* Pause animation on hover */
-}
-
-.slider-item {
-    flex-shrink: 0; /* Prevent items from shrinking */
-    width: 180px;   /* Fixed width (approx 60% of a ~300px news item) */
-    height: 140px;  /* Fixed height (approx 35% of a tall news item) */
-    margin-right: 20px; /* Gap between items */
-    box-sizing: border-box; /* <<< ADD THIS LINE */
-    background-color: var(--medium-grey); /* Placeholder BG */
-    border-radius: 6px;
-    overflow: hidden;
-    position: relative; /* For potential captions */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.slider-item a {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.slider-item img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cover the area */
-    transition: transform 0.3s ease;
-}
-
-.slider-item a:hover img {
-    transform: scale(1.05); /* Slight zoom on hover */
-}
-
-/* Optional caption styling */
-.slider-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-    color: var(--light-text);
-    padding: 15px 10px 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-.slider-item a:hover .slider-caption {
-    opacity: 1;
-}
-
-/* --- START: Visitor Stats Styles (Enhanced v2) --- */
-.visitor-stats {
-    background-color: var(--light-grey); /* Light background */
-    padding: 50px 0; /* Add more vertical space */
-    border-top: 1px solid var(--medium-grey);
-    text-align: center; /* Center align all inline content */
-}
-
-.stats-title {
-    font-size: 1.6rem; /* Make title prominent */
-    font-weight: 700;  /* Bold */
-    color: var(--psl-green); /* Use primary color */
-    margin-bottom: 10px; /* Reduced space below title */
-    letter-spacing: 0.5px;
-}
-
-/* --- START: Visitor Stats Styles (Enhanced v2 - Centering Fix) --- */
-/* ... keep .visitor-stats and .stats-title rules ... */
-
-.stats-total {
-    margin-bottom: 35px;
-    font-size: 1.1rem;
-    color: var(--dark-text);
-    line-height: 1.3;
-    text-align: center; /* <<< ADD THIS LINE */
-
-    /* --- ADD THESE LINES to center the block --- */
-    width: fit-content; /* Make block only as wide as needed */
-    margin-left: auto;
-    margin-right: auto;
-    /* --- End added lines --- */
-}
-
-.stat-total-label {
-    font-weight: 400;
-}
-
-.stat-total-count {
-    display: block;  /* <<< REMOVE this line if you want label & number on same line */
-    margin-top: 5px;  /* <<< REMOVE this line if you want label & number on same line */
-    font-weight: 700;
-    font-size: 2rem; /* Make total count large */
-    color: var(--psl-green-dark);
-    margin-left: 8px; /* Adjust space if inline */
-
-}
-
-/* ... keep .stats-grid, .stat-item, .stat-label, .stat-count rules ... */
+/* --- START: Visitor Stats Styles --- */
+.visitor-stats { background-color: var(--light-grey); padding: 50px 0; border-top: 1px solid var(--medium-grey); text-align: center; }
+.stats-title { font-size: 1.6rem; font-weight: 700; color: var(--psl-green); margin-bottom: 10px; letter-spacing: 0.5px; }
+.stats-total { margin-bottom: 35px; font-size: 1.1rem; color: var(--dark-text); line-height: 1.3; text-align: center; width: fit-content; margin-left: auto; margin-right: auto; }
+.stat-total-label { font-weight: 400; }
+.stat-total-count { display: block; margin-top: 5px; font-weight: 700; font-size: 2rem; color: var(--psl-green-dark); margin-left: 8px; }
+.stats-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px 40px; border-top: 1px solid var(--medium-grey); padding-top: 35px; max-width: 850px; margin-left: auto; margin-right: auto; }
+.stat-item { padding: 5px; min-width: 120px; text-align: center; }
+.stat-label { display: block; font-size: 0.85rem; color: #666; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-count { display: block; font-size: 1.7rem; font-weight: 700; color: var(--psl-green); line-height: 1.2; }
 /* --- END: Visitor Stats Styles --- */
 
-.stats-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center grid items */
-    gap: 20px 40px; /* Row gap, Column gap */
-    border-top: 1px solid var(--medium-grey); /* Separator line */
-    padding-top: 30px; /* Space above grid */
-    max-width: 850px; /* Constrain grid width slightly */
-    margin-left: auto; /* Center grid block */
-    margin-right: auto; /* Center grid block */
-}
-
-.stat-item {
-    padding: 5px;
-    min-width: 130px;
-    text-align: center;
-}
-
-.stat-label {
-    display: block;
-    font-size: 0.85rem; /* Small, uppercase labels */
-    color: #666;
-    margin-bottom: 6px;
-    font-weight: 600; /* Semi-bold labels */
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.stat-count {
-    display: block;
-    font-size: 1.7rem; /* Slightly smaller than total */
-    font-weight: 700;
-    color: var(--psl-green);
-    line-height: 1.2;
-}
-/* --- END: Visitor Stats Styles --- */
-
-/* Adjust Footer again if needed */
-.main-footer {
-    border-top: none;
-}
-.main-footer .container {
-     border-top: none;
-     padding-top: 30px;
-     padding-bottom: 30px;
- }
 
 /* --- Footer --- */
-.main-footer {
-    /* ... existing styles ... */
-     /* Remove top border if stats section provides separation */
-    border-top: none;
-}
-.main-footer .container {
-    border-top: none; /* Remove top border */
-    padding-top: 30px; /* Restore/adjust padding */
-    padding-bottom: 30px; /* Restore/adjust padding */
-    /* ... existing styles ... */
- }
+.main-footer { background-color: var(--footer-bg); color: rgba(255, 255, 255, 0.7); text-align: center; padding: 0; font-size: 0.85rem; margin-top: auto; border-top: none; }
+.main-footer .container { border-top: none; padding-top: 30px; padding-bottom: 30px; width: 90%; max-width: var(--container-width); margin-left: auto; margin-right: auto; }
+.main-footer p { margin-bottom: 0.4rem; line-height: 1.6; }
+.main-footer .container p { text-align: center !important; max-width: 65ch; margin-left: auto; margin-right: auto; }
 
-
-/* --- Footer --- */
-/* ... Your existing footer styles ... */
-.main-footer {
-    /* ... */
-     /* Ensure no top border if stats section provides one */
-     border-top: none; /* Remove top border if visitor-stats has bottom border */
-}
-.main-footer .container {
-     border-top: none; /* Remove top border if visitor-stats has bottom border */
-     padding-top: 30px; /* Restore padding if border removed */
-     padding-bottom: 30px;
-     /* ... */
- }
-
-
-/* --- Scroll Animation (Ensure it still applies) --- */
-.fade-in-section { /* ... */ }
-.fade-in-section.visible { /* ... */ }
-
-/* --- Responsiveness --- */
-/* Add adjustments if needed for slider/stats */
-@media (max-width: 768px) {
-    /* ... other mobile styles ... */
-
-    /* Optional: Stop slider animation on mobile, allow scroll? */
-    /* .slider-track { animation: none; } */
-    /* .slider-track-container { overflow-x: auto; -webkit-mask-image: none; mask-image: none;} */
-
-    .stats-grid {
-        justify-content: center; /* Center items when wrapping */
-    }
-    .stat-item {
-        min-width: 100px; /* Smaller min-width */
-    }
-    .stat-count {
-        font-size: 1.2rem;
-    }
-
-}
-/* ... other media queries ... */
-
-/* --- Footer --- */
-.main-footer {
-    background-color: #2c3e50; /* Keep background color */
-    color: rgba(255, 255, 255, 0.7); /* Keep text color */
-    text-align: center; /* Keep text centered */
-    padding: 0; /* REMOVE top/bottom padding from the main element */
-    font-size: 0.85rem; /* Optional: Slightly smaller font size */
-    margin-top: auto; /* Keep pushing footer down */
-}
-.main-footer p {
-     margin-bottom: 0.4rem; /* Optional: Slightly reduce space between lines */
-     line-height: 1.6; /* Ensure readability with smaller size */
-}
-.main-footer .container {
-     border-top: 1px solid rgba(255, 255, 255, 0.1); /* Keep top border */
-     /* REDUCE vertical padding significantly */
-     padding-top: 20px;    /* Was 30px */
-     padding-bottom: 20px; /* Add some bottom padding */
-     /* Keep container centering */
-     width: 90%;
-     max-width: var(--container-width);
-     margin-left: auto;
-     margin-right: auto;
- }
-
-/* Force centering specifically on paragraphs inside footer container */
-.main-footer .container p {
-     text-align: center !important; /* Keep this - centers text within the <p> */
-     margin-bottom: 0.4rem;
-     line-height: 1.6;
-
-     /* --- ADD THESE LINES to center the <p> block itself --- */
-     max-width: 65ch; /* Optional: Limit width for readability (adjust as needed) */
-     margin-left: auto;
-     margin-right: auto;
-     /* --- End added lines --- */
-}
-
-/* --- Animation --- */
-.fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-.fade-in-section.visible { opacity: 1; transform: translateY(0); }
 
 /* --- Subpage Specific Styles --- */
-
 /* Aktualnosci Page */
 .news-list-container { /* Add specific styles if needed */ }
-.news-list-item {
-    display: flex;
-    flex-direction: column; /* Stack image and content on small screens */
-    gap: 20px;
-    border-bottom: 1px solid var(--medium-grey);
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-}
+.news-list-item { display: flex; flex-direction: column; gap: 20px; border-bottom: 1px solid var(--medium-grey); padding-bottom: 30px; margin-bottom: 30px; }
 .news-list-item:last-child { border-bottom: none; margin-bottom: 0; }
-.news-list-image {
-    width: 100%;
-    max-width: 300px; /* Limit image width on larger screens */
-    height: auto;
-    object-fit: cover;
-    border-radius: 4px;
-    flex-shrink: 0; /* Prevent image shrinking */
-}
+.news-list-image { width: 100%; max-width: 300px; height: auto; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
 .news-list-content h2 { text-align: left; margin-bottom: 0.5rem; font-size: 1.6rem; }
 .news-date { font-size: 0.85rem; color: #666; margin-bottom: 1rem; }
+/* Responsive adjustment for news list */
+@media (min-width: 768px) {
+    .news-list-item { flex-direction: row; }
+    .news-list-image { margin-bottom: 0; }
+}
 
 /* Franciszek Marszałek Page */
-.content-bio {
-    display: grid;
-    grid-template-columns: 300px 1fr; /* Image column fixed width */
-    gap: 40px;
-    align-items: start;
-}
-.bio-image img { border-radius: 8px; width: 100%; }
+.content-bio { display: grid; grid-template-columns: 1fr; gap: 30px; align-items: start; } /* Default stack */
+.bio-image img { border-radius: 8px; width: 100%; max-width: 350px; margin: 0 auto 1.5rem auto; } /* Center image */
 .bio-text h2 { text-align: left; margin-bottom: 1.5rem; }
 .bio-text h3 { margin-top: 2rem; }
+@media (min-width: 768px) { /* Side-by-side on larger screens */
+    .content-bio { grid-template-columns: 300px 1fr; gap: 40px; }
+    .bio-image { max-width: none; margin: 0; }
+}
 
 /* Gallery Page */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; } /* Reduced minmax */
 .gallery-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; transition: transform 0.3s ease, box-shadow 0.3s ease; display: block; }
 .gallery-item img:hover { transform: scale(1.03); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 
 /* Press Review Page */
-.press-list { /* Add specific styles if needed */ }
+.press-list { max-width: 800px; margin-left: auto; margin-right: auto; } /* Center list */
 .press-item { border-bottom: 1px solid var(--medium-grey); padding: 25px 0; }
 .press-item:last-child { border-bottom: none; }
 .press-item h3 { margin-bottom: 0.5rem; font-size: 1.3rem; }
@@ -500,19 +297,24 @@ img { max-width: 100%; height: auto; display: block; }
 .source-link { font-size: 0.9rem; font-weight: 600; }
 
 /* Jak Wstapic Page */
-.steps-container { display: grid; gap: 25px; margin-top: 2rem; } /* Basic stacking */
-.step h3 { color: var(--psl-green); }
+.steps-container { display: grid; gap: 25px; margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+.step h3 { color: var(--psl-green); margin-bottom: 0.5rem; }
 .why-join-list { margin-top: 1.5rem; margin-bottom: 2rem; }
 
 /* Contact Page */
-.contact-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+.contact-columns { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start; } /* Default stack */
+.contact-form-container { margin-top: 2rem; }
+@media (min-width: 992px) { /* Side-by-side on large screens */
+     .contact-columns { grid-template-columns: 1fr 1fr; gap: 50px; }
+     .contact-form-container { margin-top: 0; }
+}
 .contact-info h2, .contact-form-container h2 { text-align: left; margin-bottom: 1.5rem; font-size: 1.8rem; }
 .contact-info p { margin-bottom: 1rem; display: flex; align-items: flex-start; font-size: 1rem; }
-.contact-info p i.ph { color: var(--psl-green); margin-right: 15px; width: 20px; text-align: center; flex-shrink: 0; font-size: 1.2rem; margin-top: 0.1em; /* Align icon nicely */ }
+.contact-info p i.ph { color: var(--psl-green); margin-right: 15px; width: 20px; text-align: center; flex-shrink: 0; font-size: 1.2rem; margin-top: 0.1em; }
 .contact-info a { color: var(--link-color); font-weight: 400; text-decoration: underline; }
 .contact-info a:hover { color: var(--psl-green-dark); }
 .map-embed { margin-top: 2rem; border-radius: 8px; overflow: hidden; border: 1px solid var(--medium-grey); }
-.contact-form { /* Uses form-group styles */ }
+.contact-form { }
 .form-group { margin-bottom: 1.5rem; }
 .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--dark-text); }
 .form-group input, .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--medium-grey); border-radius: 4px; font-family: var(--font-body); font-size: 1rem; transition: border-color var(--transition-speed), box-shadow var(--transition-speed); }
@@ -522,50 +324,44 @@ img { max-width: 100%; height: auto; display: block; }
 .form-notice { font-size: 0.85rem; margin-top: 1.5rem; opacity: 0.7; text-align: left; }
 
 /* --- Clover List Style --- */
-.clover-list {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 1rem;
-}
-.clover-list li {
-    position: relative;
-    padding-left: 1.8em; /* Space for icon */
-    margin-bottom: 0.75em; /* Spacing between items */
-}
+.clover-list { list-style: none; padding-left: 0; margin-top: 1rem; max-width: 65ch; /* Align with paragraph width */ margin-left: auto; margin-right: auto; text-align: left; /* Align list text left */ }
+.clover-list li { position: relative; padding-left: 1.8em; margin-bottom: 0.75em; }
 .clover-list li::before {
-    content: "\ec4c"; /* Unicode for ph-clover */
-    font-family: "Phosphor"; /* Phosphor font family */
-    position: absolute;
-    left: 0;
-    top: 0.1em; /* Adjust vertical alignment */
-    color: var(--psl-green);
-    font-weight: normal; /* Use appropriate weight */
-    font-size: 1.1em; /* Adjust icon size */
+    content: "\eccc"; /* Unicode for ph-clover */
+    font-family: "Phosphor";
+    position: absolute; left: 0; top: 0.1em;
+    color: var(--psl-green); font-weight: normal; font-size: 1.1em;
     line-height: 1;
 }
+
+
+/* --- Animation --- */
+.fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.fade-in-section.visible { opacity: 1; transform: translateY(0); }
 
 
 /* --- Responsiveness --- */
 @media (max-width: 992px) {
     .main-nav > ul { display: none; }
     .hamburger-menu { display: block; }
-    /* Stack columns on tablets */
+    /* Tablet column stacks */
     .content-bio, .customization-columns, .contact-columns { grid-template-columns: 1fr; }
-    .bio-image { max-width: 350px; margin: 0 auto 2rem auto; } /* Center bio image */
+    .bio-image { max-width: 350px; margin: 0 auto 2rem auto; }
     .contact-form-container { margin-top: 2rem; }
 }
 
 @media (max-width: 768px) {
     h1 { font-size: 1.8rem; } h2 { font-size: 1.6rem; }
     .main-nav { height: 60px; }
-    .page-content-wrapper { padding-top: 60px; }
+    :root { --header-height: 60px; } /* Update variable */
+    .page-content-wrapper { padding-top: var(--header-height); } /* Use variable */
     section { padding: 50px 0; }
     /* Stack news list items */
     .news-list-item { flex-direction: column; }
-    .news-list-image { max-width: none; margin-bottom: 1rem; } /* Allow image full width */
+    .news-list-image { max-width: none; margin-bottom: 1rem; }
     /* Stack grid layouts */
-    .overview-grid, .gallery-grid, .benefits-grid, .product-grid, .apparel-grid { grid-template-columns: 1fr; gap: 25px; }
-    /* Adjust specific mobile grid overrides if needed */
+    /* Ensure needed grids are included */
+    .overview-grid, .gallery-grid, .benefits-grid, .product-grid, .apparel-grid, .customization-columns { grid-template-columns: 1fr; gap: 25px; }
     .contact-columns { gap: 30px; }
     .mobile-nav-overlay { width: 85%; }
 }
