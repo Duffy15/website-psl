@@ -196,7 +196,7 @@ img { max-width: 100%; height: auto; display: block; }
 .slider-track {
     display: flex;
     width: calc(10 * (180px + 20px)); /* 10 items * (item width + gap) */
-    animation: scrollLeft 40s linear infinite; /* Adjust duration for speed */
+    animation: scrollLeft 45s linear infinite; /* Adjust duration for speed */
 }
 
 .slider-track:hover {
