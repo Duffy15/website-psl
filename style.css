@@ -291,6 +291,12 @@ img { max-width: 100%; height: auto; display: block; }
     color: var(--dark-text);
     line-height: 1.3;
     text-align: center; /* <<< ADD THIS LINE */
+
+    /* --- ADD THESE LINES to center the block --- */
+    width: fit-content; /* Make block only as wide as needed */
+    margin-left: auto;
+    margin-right: auto;
+    /* --- End added lines --- */
 }
 
 .stat-total-label {
