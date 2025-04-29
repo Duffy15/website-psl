@@ -132,8 +132,29 @@ img { max-width: 100%; height: auto; display: block; }
 .cta-button.large { padding: 15px 35px; font-size: 1.1rem; }
 
 /* --- Hero Section --- */
-.hero-section { background-color: var(--light-grey); text-align: center; min-height: 60vh; display: flex; align-items: center; justify-content: center; border-bottom: none; }
-.hero-content h1 { color: var(--psl-green); }
+/* --- Hero Section --- */
+.hero-section {
+    background-color: var(--light-grey);
+    text-align: center;
+    /* Make section fill the viewport height */
+    min-height: 100vh; /* <<< CHANGE 60vh to 100vh */
+
+    display: flex; /* Keep */
+    align-items: center; /* Keep (Vertical Center) */
+    justify-content: center; /* Keep (Horizontal Center) */
+    border-bottom: none;
+
+    /* Adjust padding: Remove vertical, keep horizontal */
+    padding-top: 0;    /* <<< CHANGE (was 60px) */
+    padding-bottom: 0; /* <<< CHANGE (was 60px) */
+    padding-left: 5%;  /* Keep */
+    padding-right: 5%; /* Keep */
+}
+
+.hero-content {
+    max-width: 800px;
+    /* Content inside hero */
+}.hero-content h1 { color: var(--psl-green); }
 .hero-content p { font-size: 1.15rem; margin-bottom: 2rem; max-width: 60ch; margin-left: auto; margin-right: auto; color: #555; }
 
 /* --- News Preview Section --- */
