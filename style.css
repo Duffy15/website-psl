@@ -266,43 +266,65 @@ img { max-width: 100%; height: auto; display: block; }
 /* --- END: Featured Slider Styles --- */
 
 
-/* --- START: Visitor Stats Styles --- */
+/* --- START: Visitor Stats Styles (Enhanced) --- */
 .visitor-stats {
-    background-color: var(--white); /* Or light-grey */
-    padding: 30px 0;
-    border-top: 1px solid var(--medium-grey);
-    border-bottom: 1px solid var(--medium-grey); /* Separate from footer */
-    margin-bottom: 0; /* Ensure it touches footer if desired, or add margin */
+    background-color: var(--light-grey); /* Use alternating section background */
+    padding: 45px 0; /* More vertical padding */
+    border-top: 1px solid var(--medium-grey); /* Separator line */
+    /* border-bottom: 1px solid var(--medium-grey); */ /* Optional bottom border */
+    text-align: center;
+}
+
+.stats-title {
+    font-size: 1.4rem; /* Clear title size */
+    font-weight: 600;  /* Semi-bold */
+    color: var(--dark-text); /* Or var(--psl-green) */
+    margin-bottom: 30px; /* Space below title */
+    text-align: center;
 }
 
 .stats-grid {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    justify-content: space-around; /* Distribute items */
-    gap: 20px; /* Space between items */
-    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items horizontally */
+    gap: 30px 50px; /* Increased gap: 30px vertically, 50px horizontally */
 }
 
 .stat-item {
     padding: 10px;
-    min-width: 120px; /* Minimum width for each stat */
+    min-width: 140px; /* Ensure items have enough space */
+    text-align: center;
 }
 
 .stat-label {
     display: block;
-    font-size: 0.9rem;
-    color: #555; /* Slightly muted label color */
-    margin-bottom: 5px;
+    font-size: 0.95rem; /* Slightly larger label */
+    color: #555;
+    margin-bottom: 8px;
     font-weight: 400;
 }
 
 .stat-count {
     display: block;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--psl-green); /* Use primary color for counts */
+    font-size: 2rem; /* Larger, more prominent count */
+    font-weight: 700; /* Bold */
+    color: var(--psl-green); /* Use primary color */
+    line-height: 1.2;
 }
 /* --- END: Visitor Stats Styles --- */
+
+/* --- Footer --- */
+.main-footer {
+    /* ... existing styles ... */
+     /* Remove top border if stats section provides separation */
+    border-top: none;
+}
+.main-footer .container {
+    border-top: none; /* Remove top border */
+    padding-top: 30px; /* Restore/adjust padding */
+    padding-bottom: 30px; /* Restore/adjust padding */
+    /* ... existing styles ... */
+ }
 
 
 /* --- Footer --- */
