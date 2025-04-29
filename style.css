@@ -70,27 +70,6 @@ body {
     /* background: transparent !important; */ /* Only needed if using .background-lights */
 }
 
-/* --- Background Layer (Optional - Static Black Version) --- */
-/* If you want the ambient lights, uncomment pseudo-elements and re-integrate JS */
-.background-lights {
-    position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    background-color: #000000; /* Solid Black */
-    overflow: hidden;
-}
-.background-lights::before,
-.background-lights::after {
-     content: "";
-     position: absolute;
-     inset: 0;
-     pointer-events: none;
-     background-repeat: no-repeat;
-     /* Keep lights hidden if JS control is removed */
-     opacity: 0;
-     /* transition: opacity var(--light-fade-duration) ease-in-out; */ /* Uncomment if using JS */
-}
-/* --- END Background Layer --- */
-
-
 /* --- Page Wrapper & Layout --- */
 .page-content-wrapper {
     width: 100%;
@@ -98,11 +77,6 @@ body {
     display: flex;
     flex-direction: column;
     padding-top: var(--header-height); /* Offset for fixed header */
-    /* Add position/z-index only if using .background-lights */
-     position: relative;
-     z-index: 1;
-     background-color: transparent; /* Needed if background-lights is active */
-    min-height: 100vh; /* Pushes footer down */
 }
 
 main { flex-grow: 1; }
@@ -122,7 +96,7 @@ section:nth-child(even) { background-color: var(--light-grey); }
 img { max-width: 100%; height: auto; display: block; }
 
 /* --- Header & Navigation --- */
-.main-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: var(--nav-bg); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); height: var(--header-height); transition: transform var(--header-transition-speed); }
+.main-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: var(--psl-green); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); height: var(--header-height); transition: transform var(--header-transition-speed); }
 .header-hidden { transform: translateY(-100%); }
 .main-nav { display: flex; justify-content: space-between; align-items: center; height: 100%; }
 
