@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeNavBtn = document.querySelector('.close-nav');
     const overlayNavLinks = document.querySelectorAll('.overlay-nav ul li a');
     const body = document.body;
+    const header = document.querySelector('.main-header'); // Needed for offset calc maybe later
 
     // --- Footer Current Year ---
     const currentYearSpan = document.getElementById('currentYear');
@@ -20,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
             body.classList.add('overlay-open'); // Prevent body scroll
             hamburgerBtn.setAttribute('aria-expanded', 'true');
         });
+    } else {
+        if (!hamburgerBtn) console.log("Debug: Hamburger button not found."); // Use log instead of error
+        if (!mobileNavOverlay) console.log("Debug: Mobile nav overlay not found.");
     }
 
     // --- Function to Close Overlay ---
@@ -34,10 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Close Overlay Event Listeners ---
     if (closeNavBtn) {
         closeNavBtn.addEventListener('click', closeOverlay);
+    } else {
+        console.log("Debug: Close nav button not found.");
     }
+    // Close overlay if a link inside it is clicked
     if (overlayNavLinks.length > 0) {
         overlayNavLinks.forEach(link => {
-            link.addEventListener('click', closeOverlay); // Close when any overlay link is clicked
+            link.addEventListener('click', closeOverlay);
         });
     }
 
@@ -46,22 +53,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fadeInSections.length > 0) {
         const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
-                // Check if element is intersecting and not already visible
-                if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
-                     console.log('Element intersecting:', entry.target); // Optional Debug Log
+                if (entry.isIntersecting) {
+                    // Optional Debug Log: console.log('Element intersecting:', entry.target);
                     entry.target.classList.add('visible');
-                    // Optionally unobserve after animation to save resources,
-                    // but keep observing if re-animation on scroll up is desired.
-                    // observer.unobserve(entry.target);
+                    // Keep observing if you want animations to replay if scrolled out/in
+                    // observer.unobserve(entry.target); // Uncomment to animate only once
                 }
-                 // Optional: remove 'visible' if scrolling up past element
-                 // else if (!entry.isIntersecting && entry.target.classList.contains('visible')) {
-                 //     entry.target.classList.remove('visible');
-                 // }
+                // Optional: remove 'visible' if scrolling up past element
+                // else if (!entry.isIntersecting && entry.target.classList.contains('visible')) {
+                //     entry.target.classList.remove('visible');
+                // }
             });
         }, {
-            rootMargin: '0px 0px -10% 0px', // Trigger when element is 10% into view from bottom
-            threshold: 0 // As soon as any part enters viewport based on rootMargin
+            rootMargin: '0px 0px -10% 0px', // Trigger when element is 10% into view
+            threshold: 0
          });
 
         fadeInSections.forEach(section => {
@@ -70,24 +75,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     } else {
-        console.log('No .fade-in-section elements found.');
+        console.log('Debug: No .fade-in-section elements found.');
     }
 
+
     // --- Active Navigation Link Highlighting ---
-    // (Simple version based on current URL)
     try {
-        const currentLocation = window.location.pathname.split('/').pop(); // Gets the filename e.g., "about.html" or "" for index
+        const currentLocation = window.location.pathname.split('/').pop();
+        // Handle index default page correctly
+        const currentPage = (currentLocation === "" || currentLocation === "index.html") ? "index.html" : currentLocation;
+
         const navLinks = document.querySelectorAll('.main-nav ul li a');
         const mobileNavLinks = document.querySelectorAll('.overlay-nav ul li a');
 
         const setActive = (links) => {
              links.forEach(link => {
                 const linkHref = link.getAttribute('href').split('/').pop();
-                link.classList.remove('active'); // Remove active from all
-                // Handle index page case (currentLocation is "" or "index.html")
-                if ((currentLocation === "" || currentLocation === "index.html") && (linkHref === "" || linkHref === "index.html")) {
-                    link.classList.add('active');
-                } else if (currentLocation !== "" && currentLocation !== "index.html" && linkHref === currentLocation) {
+                const linkPage = (linkHref === "" || linkHref === "index.html") ? "index.html" : linkHref;
+
+                link.classList.remove('active'); // Remove active from all first
+                if (linkPage === currentPage) {
                      link.classList.add('active');
                 }
             });
@@ -100,87 +107,57 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Error highlighting navigation:", e);
     }
 
-       /* --- START: JavaScript Infinite Slider Logic --- */
-    const sliderTrack = document.querySelector('.slider-track');
-    const sliderContainer = document.querySelector('.slider-track-container'); // Get container for hover
+    /* --- START: Swiper Slider Initialization --- */
+    // Check if we are on a page that actually has the slider container
+    const swiperContainer = document.querySelector('.featured-swiper-container');
+    if (swiperContainer) {
+        try {
+            const swiper = new Swiper('.featured-swiper-container', {
+                // Parameters
+                direction: 'horizontal',
+                loop: true, // Enable infinite loop
+                slidesPerView: 'auto', // Show slides based on their CSS width
+                spaceBetween: 20, // Gap between slides
+                grabCursor: true,
+                centeredSlides: false, // Set to true if you want active slide centered
 
-    if (sliderTrack && sliderContainer) {
-        const itemWidth = 180; // Width of one item
-        const itemMargin = 20; // Margin-right on item
-        const itemTotalWidth = itemWidth + itemMargin; // Space one item takes
-        const numVisibleItems = 5; // Number of original items before duplication
-        const resetPoint = - (numVisibleItems * itemTotalWidth); // e.g., -1000px
+                // Autoplay configuration
+                autoplay: {
+                  delay: 4000, // Longer delay between slides
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                },
 
-        let currentPosition = 0;
-        let speed = 25; // Pixels per second - ADJUST FOR DESIRED SPEED
-        let lastTimestamp = null;
-        let animationFrameId = null; // To control pausing
-        let isPaused = false;
-
-        function animateScroll(timestamp) {
-            if (isPaused) return; // Don't animate if paused
-
-            if (lastTimestamp === null) {
-                lastTimestamp = timestamp; // Initialize timestamp
-            }
-            const deltaTime = (timestamp - lastTimestamp) / 1000; // Time since last frame in seconds
-            lastTimestamp = timestamp;
-
-            // Move position leftwards
-            currentPosition -= speed * deltaTime;
-
-            // --- Loop Reset Logic ---
-            // If current position has gone past the reset point...
-            if (currentPosition <= resetPoint) {
-                // Calculate how much it went past
-                const overflow = currentPosition - resetPoint;
-                // Reset position to the beginning, adding the overflow
-                // This ensures no visual jump
-                currentPosition = overflow;
-                // console.log('Slider loop reset'); // Debug log
-                console.log(`RESETTING: StartPos=${resetPoint.toFixed(2)}, EndPos=${(currentPosition - overflow).toFixed(2)}, Overflow=${overflow.toFixed(2)}, NewPos=${currentPosition.toFixed(2)}`); // <<< ADD LOG
-
-            }
-
-            // Apply the transform
-            sliderTrack.style.transform = `translateX(${currentPosition}px)`;
-
-            // Request the next frame
-            animationFrameId = requestAnimationFrame(animateScroll);
+                 // Breakpoints for responsive adjustments
+                 breakpoints: {
+                    // Mobile first approach (default is 'auto')
+                    640: { slidesPerView: 2, spaceBetween: 20 },
+                    768: { slidesPerView: 3, spaceBetween: 20 },
+                    1024: { slidesPerView: 4, spaceBetween: 20 },
+                    1200: { slidesPerView: 5, spaceBetween: 20 }
+                  }
+            });
+            console.log('Swiper slider initialized.');
+        } catch (e) {
+            console.error("Error initializing Swiper:", e);
         }
-
-        // --- Pause on Hover ---
-        sliderContainer.addEventListener('mouseenter', () => {
-            if (!isPaused) {
-                console.log('Slider paused');
-                isPaused = true;
-                if (animationFrameId) {
-                    cancelAnimationFrame(animationFrameId); // Stop requesting new frames
-                    animationFrameId = null;
-                }
-                lastTimestamp = null; // Reset timestamp for smooth resume
-            }
-        });
-
-        sliderContainer.addEventListener('mouseleave', () => {
-            if (isPaused) {
-                console.log('Slider resumed');
-                isPaused = false;
-                // Restart the animation loop
-                animationFrameId = requestAnimationFrame(animateScroll);
-            }
-        });
-
-        // --- Start the animation ---
-        console.log('Initializing JS slider animation...');
-        animationFrameId = requestAnimationFrame(animateScroll);
-
     } else {
-        if (!sliderTrack) console.error("Slider track (.slider-track) not found!");
-        if (!sliderContainer) console.error("Slider track container (.slider-track-container) not found!");
+         console.log('Debug: Swiper container (.featured-swiper-container) not found on this page.');
     }
-    /* --- END: JavaScript Infinite Slider Logic --- */
+    /* --- END: Swiper Slider Initialization --- */
 
-    // ... (keep existing code: interactive logo, contact form, active nav etc.) ...
-    
+
+    // --- Contact Form Handling Placeholder ---
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            // Add your form submission logic here (e.g., using Fetch API or AJAX)
+            // You will need a backend endpoint or service to send the data to.
+            console.log('Form submitted (frontend placeholder)');
+            alert('Dziękujemy za wiadomość! (Potwierdzenie tymczasowe)'); // Temporary confirmation
+            // contactForm.reset(); // Optional: Clear form after submission
+        });
+    }
+
 }); // End DOMContentLoaded listener
