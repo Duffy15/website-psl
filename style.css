@@ -266,52 +266,89 @@ img { max-width: 100%; height: auto; display: block; }
 /* --- END: Featured Slider Styles --- */
 
 
-/* --- START: Visitor Stats Styles (Enhanced) --- */
+/* --- START: Visitor Stats Styles (Enhanced v2) --- */
 .visitor-stats {
-    background-color: var(--light-grey); /* Use alternating section background */
-    padding: 45px 0; /* More vertical padding */
-    border-top: 1px solid var(--medium-grey); /* Separator line */
-    /* border-bottom: 1px solid var(--medium-grey); */ /* Optional bottom border */
-    text-align: center;
+    background-color: var(--light-grey); /* Light background */
+    padding: 50px 0; /* Add more vertical space */
+    border-top: 1px solid var(--medium-grey);
+    text-align: center; /* Center align all inline content */
 }
 
 .stats-title {
-    font-size: 1.4rem; /* Clear title size */
-    font-weight: 600;  /* Semi-bold */
-    color: var(--dark-text); /* Or var(--psl-green) */
-    margin-bottom: 30px; /* Space below title */
-    text-align: center;
+    font-size: 1.6rem; /* Make title prominent */
+    font-weight: 700;  /* Bold */
+    color: var(--psl-green); /* Use primary color */
+    margin-bottom: 10px; /* Reduced space below title */
+    letter-spacing: 0.5px;
+}
+
+.stats-total {
+    margin-bottom: 30px; /* Space below total, above grid */
+    font-size: 1.1rem;
+    color: var(--dark-text);
+    line-height: 1.3; /* Adjust line height */
+}
+
+.stat-total-label {
+    font-weight: 400;
+    /* Optional: Smaller label */
+    /* font-size: 0.9em; */
+}
+
+.stat-total-count {
+    display: block; /* Display count on new line potentially */
+    margin-top: 5px; /* Space between label and count if block */
+    font-weight: 700; /* Bold total number */
+    font-size: 2rem; /* Make total count large */
+    color: var(--psl-green-dark); /* Darker green for emphasis */
 }
 
 .stats-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center items horizontally */
-    gap: 30px 50px; /* Increased gap: 30px vertically, 50px horizontally */
+    justify-content: center; /* Center grid items */
+    gap: 20px 40px; /* Row gap, Column gap */
+    border-top: 1px solid var(--medium-grey); /* Separator line */
+    padding-top: 30px; /* Space above grid */
+    max-width: 850px; /* Constrain grid width slightly */
+    margin-left: auto; /* Center grid block */
+    margin-right: auto; /* Center grid block */
 }
 
 .stat-item {
-    padding: 10px;
-    min-width: 140px; /* Ensure items have enough space */
+    padding: 5px;
+    min-width: 130px;
     text-align: center;
 }
 
 .stat-label {
     display: block;
-    font-size: 0.95rem; /* Slightly larger label */
-    color: #555;
-    margin-bottom: 8px;
-    font-weight: 400;
+    font-size: 0.85rem; /* Small, uppercase labels */
+    color: #666;
+    margin-bottom: 6px;
+    font-weight: 600; /* Semi-bold labels */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .stat-count {
     display: block;
-    font-size: 2rem; /* Larger, more prominent count */
-    font-weight: 700; /* Bold */
-    color: var(--psl-green); /* Use primary color */
+    font-size: 1.7rem; /* Slightly smaller than total */
+    font-weight: 700;
+    color: var(--psl-green);
     line-height: 1.2;
 }
 /* --- END: Visitor Stats Styles --- */
+
+/* Adjust Footer again if needed */
+.main-footer {
+    border-top: none;
+}
+.main-footer .container {
+     border-top: none;
+     padding-top: 30px;
+     padding-bottom: 30px;
+ }
 
 /* --- Footer --- */
 .main-footer {
