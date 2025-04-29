@@ -100,5 +100,88 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Error highlighting navigation:", e);
     }
 
+       /* --- START: JavaScript Infinite Slider Logic --- */
+    const sliderTrack = document.querySelector('.slider-track');
+    const sliderContainer = document.querySelector('.slider-track-container'); // Get container for hover
 
+    if (sliderTrack && sliderContainer) {
+        const itemWidth = 180; // Width of one item
+        const itemMargin = 20; // Margin-right on item
+        const itemTotalWidth = itemWidth + itemMargin; // Space one item takes
+        const numVisibleItems = 5; // Number of original items before duplication
+        const resetPoint = - (numVisibleItems * itemTotalWidth); // e.g., -1000px
+
+        let currentPosition = 0;
+        let speed = 25; // Pixels per second - ADJUST FOR DESIRED SPEED
+        let lastTimestamp = null;
+        let animationFrameId = null; // To control pausing
+        let isPaused = false;
+
+        function animateScroll(timestamp) {
+            if (isPaused) return; // Don't animate if paused
+
+            if (lastTimestamp === null) {
+                lastTimestamp = timestamp; // Initialize timestamp
+            }
+            const deltaTime = (timestamp - lastTimestamp) / 1000; // Time since last frame in seconds
+            lastTimestamp = timestamp;
+
+            // Move position leftwards
+            currentPosition -= speed * deltaTime;
+
+            // --- Loop Reset Logic ---
+            // If current position has gone past the reset point...
+            if (currentPosition <= resetPoint) {
+                // Calculate how much it went past
+                const overflow = currentPosition - resetPoint;
+                // Reset position to the beginning, adding the overflow
+                // This ensures no visual jump
+                currentPosition = overflow;
+                // console.log('Slider loop reset'); // Debug log
+            }
+
+            // Apply the transform
+            sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+
+            // Request the next frame
+            animationFrameId = requestAnimationFrame(animateScroll);
+        }
+
+        // --- Pause on Hover ---
+        sliderContainer.addEventListener('mouseenter', () => {
+            if (!isPaused) {
+                console.log('Slider paused');
+                isPaused = true;
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId); // Stop requesting new frames
+                    animationFrameId = null;
+                }
+                lastTimestamp = null; // Reset timestamp for smooth resume
+            }
+        });
+
+        sliderContainer.addEventListener('mouseleave', () => {
+            if (isPaused) {
+                console.log('Slider resumed');
+                isPaused = false;
+                // Restart the animation loop
+                animationFrameId = requestAnimationFrame(animateScroll);
+            }
+        });
+
+        // --- Start the animation ---
+        console.log('Initializing JS slider animation...');
+        animationFrameId = requestAnimationFrame(animateScroll);
+
+    } else {
+        if (!sliderTrack) console.error("Slider track (.slider-track) not found!");
+        if (!sliderContainer) console.error("Slider track container (.slider-track-container) not found!");
+    }
+    /* --- END: JavaScript Infinite Slider Logic --- */
+
+    // ... (keep existing code: interactive logo, contact form, active nav etc.) ...
+
+}); // End DOMContentLoaded listener
+
+    
 }); // End DOMContentLoaded listener
