@@ -211,6 +211,7 @@ img { max-width: 100%; height: auto; display: block; }
     width: 180px;   /* Fixed width (approx 60% of a ~300px news item) */
     height: 140px;  /* Fixed height (approx 35% of a tall news item) */
     margin-right: 20px; /* Gap between items */
+    box-sizing: border-box; /* <<< ADD THIS LINE */
     background-color: var(--medium-grey); /* Placeholder BG */
     border-radius: 6px;
     overflow: hidden;
