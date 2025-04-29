@@ -137,7 +137,7 @@ img { max-width: 100%; height: auto; display: block; }
     background-color: var(--light-grey);
     text-align: center;
     /* Make section fill the viewport height */
-    min-height: 100vh; /* <<< CHANGE 60vh to 100vh */
+    min-height: 90vh; /* <<< CHANGE 60vh to 100vh */
 
     display: flex; /* Keep */
     align-items: center; /* Keep (Vertical Center) */
