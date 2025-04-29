@@ -159,9 +159,76 @@ img { max-width: 100%; height: auto; display: block; }
 .cta-button.large { padding: 15px 35px; font-size: 1.1rem; }
 
 /* --- Hero Section --- */
-.hero-section { background-color: var(--light-grey); text-align: center; min-height: 100vh; display: flex; align-items: center; justify-content: center; border-bottom: none; padding: 0 5%; }
-.hero-content h1 { color: var(--psl-green); }
-.hero-content p { font-size: 1.15rem; margin-bottom: 2rem; max-width: 60ch; margin-left: auto; margin-right: auto; color: #555; }
+/* --- Hero Section --- */
+.hero-section {
+    /* background-color: var(--light-grey); */ /* REMOVE background color */
+    position: relative; /* Needed for absolute positioning of background */
+    overflow: hidden;   /* Hide anything spilling out */
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: none;
+    padding: 0 5%; /* Keep horizontal padding */
+    color: var(--light-text); /* Default text color for hero now white */
+}
+
+/* New styles for the background slideshow */
+.hero-bg-slideshow {
+    position: absolute;
+    inset: 0; /* Cover entire hero section */
+    z-index: 0; /* Base layer within hero */
+}
+
+.hero-bg-slide {
+    position: absolute;
+    inset: 0; /* Each slide covers the area */
+    background-size: cover; /* Cover the area */
+    background-position: center center; /* Center the image */
+    opacity: 0; /* Start hidden */
+    transition: opacity 1.5s ease-in-out; /* Smooth fade effect */
+    z-index: 1; /* Base slide index */
+}
+
+.hero-bg-slide.active {
+    opacity: 1; /* Make the active slide visible */
+    z-index: 2; /* Ensure active slide is on top during transition */
+}
+/* End of slideshow styles */
+
+
+.hero-content {
+    max-width: 800px;
+    position: relative; /* Position above background */
+    z-index: 1;         /* Sit on top of slideshow */
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+    padding: 30px 40px; /* Add padding inside the overlay */
+    border-radius: 8px; /* Optional rounded corners */
+}
+.hero-content h1 {
+    color: var(--light-text); /* White heading */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add shadow for readability */
+}
+.hero-content p {
+    color: var(--light-text); /* White paragraph text */
+     text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Add shadow for readability */
+    opacity: 0.95; /* Slight transparency if needed */
+    margin-bottom: 2rem;
+}
+/* Ensure buttons are styled correctly on dark overlay */
+.hero-section .cta-button.primary { /* Keep original style */ }
+.hero-section .cta-button.secondary {
+    /* Make secondary button clearer on dark/image background */
+    color: var(--white);
+    border-color: var(--white);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.hero-section .cta-button.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--white);
+    color: var(--white);
+}
 
 /* --- START: Featured Slider Styles (Swiper) --- */
 .featured-slider {
