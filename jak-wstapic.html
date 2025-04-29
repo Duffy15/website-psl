@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,14 +34,14 @@
              <button class="close-nav" aria-label="Close Menu"><i class="ph ph-x"></i></button>
             <nav class="overlay-nav">
                  <ul>
-                   <li><a href="index.html">Strona Główna</a></li>
+                    <li><a href="index.html">Strona Główna</a></li>
                     <li><a href="aktualnosci.html">Aktualności</a></li>
                     <li><a href="franciszek-marszalek.html">Franciszek Marszałek</a></li>
                     <li><a href="galeria.html">Galeria zdjęć</a></li>
                     <li><a href="prasa.html">Przegląd prasy</a></li>
                     <li><a href="jak-wstapic.html">Jak wstąpić?</a></li>
                     <li><a href="kontakt.html">Kontakt</a></li>
-                </ul>
+                 </ul>
             </nav>
         </div>
 
@@ -55,21 +56,23 @@
             <section id="how-to-join-steps" class="fade-in-section">
                 <div class="container">
                     <h2>Proces Dołączenia</h2>
-                    <div class="steps-container"> <div class="step">
+                    <div class="steps-container">
+                        <div class="step">
                             <h3>1. Skontaktuj się z Nami</h3>
-                            <p>Wyraź chęć dołączenia kontaktując się z nami telefonicznie, mailowo lub poprzez formularz na stronie <a href="kontakt.html">Kontakt</a>. Chętnie odpowiemy na Twoje pytania.</p>
+                            <p>Wyraź chęć dołączenia kontaktując się z nami telefonicznie, mailowo lub poprzez formularz na stronie <a href="kontakt.html">Kontakt</a>. Chętnie odpowiemy na Twoje pytania i przedstawimy szczegóły.</p>
                         </div>
                          <div class="step">
                             <h3>2. Wypełnij Deklarację Członkowską</h3>
-                            <p>Otrzymasz od nas deklarację członkowską do wypełnienia. Zawiera ona podstawowe dane oraz oświadczenie o akceptacji statutu PSL.</p>
-                             </div>
-                         <div class="step">
-                            <h3>3. Decyzja Zarządu Koła</h3>
-                            <p>Zarząd koła PSL Krotoszyn rozpatrzy Twoją deklarację. O decyzji zostaniesz poinformowany/a.</p>
+                            <p>Otrzymasz od nas deklarację członkowską do wypełnienia. Zawiera ona podstawowe dane oraz oświadczenie o akceptacji statutu PSL i zgodę na przetwarzanie danych.</p>
+                             <p><a href="[Link do pliku PDF z deklaracją - jeśli jest]" class="cta-button tertiary" download>Pobierz deklarację (opcjonalnie)</a></p>
                         </div>
                          <div class="step">
-                            <h3>4. Witamy w Zespole!</h3>
-                            <p>Po pozytywnej decyzji, staniesz się pełnoprawnym członkiem PSL Krotoszyn. Zapraszamy do aktywnego udziału w naszych działaniach!</p>
+                            <h3>3. Złóż Deklarację i Opłać Składkę</h3>
+                             <p>Wypełnioną i podpisaną deklarację złóż w [Określić Gdzie - np. siedzibie koła] lub przekaż [Określić Komu]. Zgodnie ze statutem, obowiązuje również składka członkowska - informacje o wysokości i sposobie płatności uzyskasz przy składaniu deklaracji.</p>
+                        </div>
+                         <div class="step">
+                            <h3>4. Decyzja Zarządu Koła i Witamy!</h3>
+                             <p>Zarząd koła PSL Krotoszyn rozpatrzy Twoją deklarację w najbliższym możliwym terminie. Po pozytywnej decyzji, staniesz się pełnoprawnym członkiem PSL Krotoszyn. Otrzymasz legitymację i zaproszenie do aktywnego udziału w naszych działaniach!</p>
                         </div>
                     </div>
                 </div>
@@ -79,46 +82,40 @@
                  <div class="container">
                     <h2>Dlaczego Warto Dołączyć?</h2>
                     <ul class="clover-list why-join-list"> <li>Masz realny wpływ na lokalne decyzje i rozwój Krotoszyna.</li>
-                        <li>Współpracujesz z ludźmi, którym zależy na dobru wspólnym.</li>
-                         <li>Rozwijasz swoje kompetencje i zdobywasz doświadczenie w działalności społecznej.</li>
+                        <li>Współpracujesz z ludźmi, którym zależy na dobru wspólnym i wartościach ludowych.</li>
+                         <li>Rozwijasz swoje kompetencje społeczne i polityczne, zdobywasz doświadczenie.</li>
+                         <li>Stajesz się częścią ogólnopolskiej organizacji z bogatą tradycją.</li>
                         <li>Bierzesz udział w kształtowaniu programu i polityki PSL na poziomie lokalnym i krajowym.</li>
                     </ul>
-                     <a href="kontakt.html" class="cta-button primary large">Skontaktuj się Dziś!</a>
+                     <a href="kontakt.html" class="cta-button primary large">Skontaktuj się i Dołącz Dziś!</a>
                 </div>
             </section>
 
         </main>
 
-<section class="visitor-stats fade-in-section">
-    <div class="container">
-        <h3 class="stats-title">Odwiedziło nas:</h3> <p class="stats-total"> <span class="stat-total-label">Łącznie:</span>
-            <span class="stat-total-count">[całkowita liczba]</span> </p>
-        <div class="stats-grid"> <div class="stat-item">
-                <span class="stat-label">DZIŚ</span> <span class="stat-count">[liczba]</span>
+        <section class="visitor-stats fade-in-section">
+            <div class="container">
+                <h3 class="stats-title">Odwiedziło nas:</h3>
+                <p class="stats-total">
+                    <span class="stat-total-label">Łącznie:</span>
+                    <span class="stat-total-count">[całkowita liczba]</span>
+                </p>
+                <div class="stats-grid">
+                   <div class="stat-item"><span class="stat-label">DZIŚ</span><span class="stat-count">[liczba]</span></div>
+                    <div class="stat-item"><span class="stat-label">WCZORAJ</span><span class="stat-count">[liczba]</span></div>
+                    <div class="stat-item"><span class="stat-label">W TYM TYGODNIU</span><span class="stat-count">[liczba]</span></div>
+                    <div class="stat-item"><span class="stat-label">W TYM MIESIĄCU</span><span class="stat-count">[liczba]</span></div>
+                </div>
             </div>
-            <div class="stat-item">
-                <span class="stat-label">WCZORAJ</span>
-                <span class="stat-count">[liczba]</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">W TYM TYGODNIU</span>
-                <span class="stat-count">[liczba]</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">W TYM MIESIĄCU</span>
-                <span class="stat-count">[liczba]</span>
-            </div>
-        </div>
-    </div>
-</section>
-        
+        </section>
         <footer class="main-footer fade-in-section">
              <div class="container">
                 <p>PSL Krotoszyn - Polskie Stronnictwo Ludowe</p>
-                <p>Adres: ul. Kobylińska 10a, Krotoszyn | Email: [Wstaw Email] | Tel: 62 725 28 80</p>
+                <p>Adres: [Wstaw Adres Siedziby], Krotoszyn | Email: [Wstaw Email] | Tel: [Wstaw Telefon]</p>
                 <p>© <span id="currentYear"></span> PSL Krotoszyn. Wszelkie prawa zastrzeżone.</p>
             </div>
         </footer>
-    </div> <script src="script.js"></script>
+    </div> <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
