@@ -107,6 +107,44 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Error highlighting navigation:", e);
     }
 
+/* --- START: Hero Background Slideshow --- */
+    const heroSlides = document.querySelectorAll('.hero-bg-slide');
+    if (heroSlides.length > 1) { // Only run if there's more than one slide
+        let currentSlideIndex = 0;
+        const slideInterval = 6000; // Time each slide is visible (milliseconds) e.g., 6 seconds
+
+        // Function to change slide
+        function changeHeroSlide() {
+            // Remove active class from current slide
+            if (heroSlides[currentSlideIndex]) {
+                heroSlides[currentSlideIndex].classList.remove('active');
+            }
+
+            // Move to the next slide index, looping back to 0
+            currentSlideIndex = (currentSlideIndex + 1) % heroSlides.length;
+
+            // Add active class to the new current slide
+            if (heroSlides[currentSlideIndex]) {
+                heroSlides[currentSlideIndex].classList.add('active');
+            }
+        }
+
+        // Start the slideshow
+        // Ensure the first slide is visible initially (set in HTML already)
+        // Set interval to change slides
+        setInterval(changeHeroSlide, slideInterval);
+        console.log('Hero slideshow initialized.');
+
+    } else {
+        // If only one slide, make sure it's visible
+        if (heroSlides.length === 1) {
+            heroSlides[0].classList.add('active');
+        }
+        console.log('Debug: Hero slideshow needs more than one .hero-bg-slide element to run.');
+    }
+    /* --- END: Hero Background Slideshow --- */
+
+    
     /* --- START: Swiper Slider Initialization --- */
     // Check if we are on a page that actually has the slider container
     const swiperContainer = document.querySelector('.featured-swiper-container');
