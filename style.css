@@ -226,7 +226,15 @@ img { max-width: 100%; height: auto; display: block; }
 
 
 /* --- Footer --- */
-.main-footer { background-color: var(--footer-bg); color: rgba(255, 255, 255, 0.7); text-align: center; padding: 0; font-size: 0.85rem; margin-top: auto; border-top: none; }
+.main-footer {
+    background-color: var(--psl-green-dark); /* <<< CHANGED to Dark Green */
+    color: var(--light-text); /* <<< CHANGED to Opaque White */
+    text-align: center;
+    padding: 0;
+    font-size: 0.85rem;
+    margin-top: auto;
+    border-top: none;
+}
 .main-footer .container { border-top: none; padding-top: 30px; padding-bottom: 30px; width: 90%; max-width: var(--container-width); margin-left: auto; margin-right: auto; }
 .main-footer p { margin-bottom: 0.4rem; line-height: 1.6; }
 .main-footer .container p { text-align: center !important; max-width: 65ch; margin-left: auto; margin-right: auto; }
