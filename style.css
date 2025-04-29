@@ -200,29 +200,43 @@ img { max-width: 100%; height: auto; display: block; }
 
 .hero-content {
     max-width: 800px;
-    position: relative; /* Position above background */
-    z-index: 1;         /* Sit on top of slideshow */
-    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
-    padding: 30px 40px; /* Add padding inside the overlay */
-    border-radius: 8px; /* Optional rounded corners */
+    position: relative; /* Keep */
+    z-index: 1;         /* Keep */
+    /* background-color: rgba(0, 0, 0, 0.4); */ /* <<< REMOVE */
+    /* padding: 30px 40px; */ /* <<< REMOVE */
+    /* border-radius: 8px; */ /* <<< REMOVE */
+    /* Text is now directly on images */
 }
+/* Update text styles within hero for readability */
 .hero-content h1 {
-    color: var(--light-text); /* White heading */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add shadow for readability */
+    color: var(--light-text);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* Adjust shadow as needed */
 }
 .hero-content p {
-    color: var(--light-text); /* White paragraph text */
-     text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Add shadow for readability */
-    opacity: 0.95; /* Slight transparency if needed */
-    margin-bottom: 2rem;
+    color: var(--light-text);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Adjust shadow as needed */
+    opacity: 0.95;
+    margin-bottom: 2rem; /* Keep spacing above buttons */
 }
-/* Ensure buttons are styled correctly on dark overlay */
-.hero-section .cta-button.primary { /* Keep original style */ }
+/* Add/Update this rule for buttons inside hero */
+.hero-content .cta-button {
+    display: block;      /* Stack buttons vertically */
+    width: fit-content;  /* Button width based on text */
+    max-width: 90%;      /* Prevent button being too wide on small screens */
+    margin-left: auto;   /* Center the button block */
+    margin-right: auto;  /* Center the button block */
+    margin-bottom: 15px; /* Space between stacked buttons */
+}
+/* Remove margin from the last button in the group */
+.hero-content .cta-button:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Keep the adjusted styles for button variants if needed */
 .hero-section .cta-button.secondary {
-    /* Make secondary button clearer on dark/image background */
     color: var(--white);
     border-color: var(--white);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1); /* Slight background helps visibility */
 }
 .hero-section .cta-button.secondary:hover {
     background-color: rgba(255, 255, 255, 0.2);
