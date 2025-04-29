@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSlides = document.querySelectorAll('.hero-bg-slide');
     if (heroSlides.length > 1) { // Only run if there's more than one slide
         let currentSlideIndex = 0;
-        const slideInterval = 6000; // Time each slide is visible (milliseconds) e.g., 6 seconds
+        const slideInterval = 60000; // Time each slide is visible (milliseconds) e.g., 60 seconds
 
         // Function to change slide
         function changeHeroSlide() {
