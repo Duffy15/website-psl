@@ -282,26 +282,32 @@ img { max-width: 100%; height: auto; display: block; }
     letter-spacing: 0.5px;
 }
 
+/* --- START: Visitor Stats Styles (Enhanced v2 - Centering Fix) --- */
+/* ... keep .visitor-stats and .stats-title rules ... */
+
 .stats-total {
-    margin-bottom: 30px; /* Space below total, above grid */
+    margin-bottom: 35px;
     font-size: 1.1rem;
     color: var(--dark-text);
-    line-height: 1.3; /* Adjust line height */
+    line-height: 1.3;
+    text-align: center; /* <<< ADD THIS LINE */
 }
 
 .stat-total-label {
     font-weight: 400;
-    /* Optional: Smaller label */
-    /* font-size: 0.9em; */
 }
 
 .stat-total-count {
-    display: block; /* Display count on new line potentially */
-    margin-top: 5px; /* Space between label and count if block */
-    font-weight: 700; /* Bold total number */
+    /* display: block; */ /* <<< REMOVE this line if you want label & number on same line */
+    /* margin-top: 5px; */ /* <<< REMOVE this line if you want label & number on same line */
+    font-weight: 700;
     font-size: 2rem; /* Make total count large */
-    color: var(--psl-green-dark); /* Darker green for emphasis */
+    color: var(--psl-green-dark);
+    margin-left: 8px; /* Adjust space if inline */
 }
+
+/* ... keep .stats-grid, .stat-item, .stat-label, .stat-count rules ... */
+/* --- END: Visitor Stats Styles --- */
 
 .stats-grid {
     display: flex;
