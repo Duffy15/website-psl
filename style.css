@@ -217,6 +217,10 @@ img { max-width: 100%; height: auto; display: block; }
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Adjust shadow as needed */
     opacity: 0.95;
     margin-bottom: 2rem; /* Keep spacing above buttons */
+    max-width: 60ch; /* Limit line length for readability */
+    margin-left: auto;  /* Center the paragraph block */
+    margin-right: auto; /* Center the paragraph block */
+    text-align: center; /* <<< ADD THIS LINE to center text lines */
 }
 /* Add/Update this rule for buttons inside hero */
 .hero-content .cta-button {
