@@ -180,8 +180,5 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --- END: JavaScript Infinite Slider Logic --- */
 
     // ... (keep existing code: interactive logo, contact form, active nav etc.) ...
-
-}); // End DOMContentLoaded listener
-
     
 }); // End DOMContentLoaded listener
