@@ -138,6 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // This ensures no visual jump
                 currentPosition = overflow;
                 // console.log('Slider loop reset'); // Debug log
+                console.log(`RESETTING: StartPos=${resetPoint.toFixed(2)}, EndPos=${(currentPosition - overflow).toFixed(2)}, Overflow=${overflow.toFixed(2)}, NewPos=${currentPosition.toFixed(2)}`); // <<< ADD LOG
+
             }
 
             // Apply the transform
