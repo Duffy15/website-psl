@@ -311,11 +311,6 @@ img { max-width: 100%; height: auto; display: block; }
     color: var(--psl-green-dark);
     margin-left: 8px; /* Adjust space if inline */
 
-    /* --- ADD THESE LINES to center the block --- */
-    width: fit-content; /* Make block only as wide as needed */
-    margin-left: auto;
-    margin-right: auto;
-    /* --- End added lines --- */
 }
 
 /* ... keep .stats-grid, .stat-item, .stat-label, .stat-count rules ... */
