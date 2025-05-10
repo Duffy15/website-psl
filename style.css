@@ -340,16 +340,6 @@ img { max-width: 100%; height: auto; display: block; }
     .news-list-image { margin-bottom: 0; }
 }
 
-/* Franciszek Marszałek Page */
-.content-bio { display: grid; grid-template-columns: 1fr; gap: 30px; align-items: start; } /* Default stack */
-.bio-image img { border-radius: 8px; width: 100%; max-width: 350px; margin: 0 auto 1.5rem auto; } /* Center image */
-.bio-text h2 { text-align: left; margin-bottom: 1.5rem; }
-.bio-text h3 { margin-top: 2rem; }
-@media (min-width: 768px) { /* Side-by-side on larger screens */
-    .content-bio { grid-template-columns: 300px 1fr; gap: 40px; }
-    .bio-image { max-width: none; margin: 0; }
-}
-
 /* Gallery Page */
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; } /* Reduced minmax */
 .gallery-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; transition: transform 0.3s ease, box-shadow 0.3s ease; display: block; }
