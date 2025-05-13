@@ -248,6 +248,23 @@ img { max-width: 100%; height: auto; display: block; }
     color: var(--white);
 }
 
+/* --- Full-Width Image Banner Above Slider --- */
+.full-width-image-banner {
+    width: 100vw; /* Full viewport width */
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 0;
+    height: 100px; /* Set the desired height */
+    overflow: hidden; /* Hide any overflowing parts of the image */
+}
+
+.banner-image {
+    width: 100%; /* Make the image fill the width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the whole image is visible and resize to fit within the 100px height. */
+    display: block; /* Removes any potential extra spacing below the image */
+}
+
 /* --- START: Featured Slider Styles (Swiper) --- */
 .featured-slider {
     background-color: var(--white);
