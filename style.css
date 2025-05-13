@@ -250,19 +250,27 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* --- Full-Width Image Banner Above Slider --- */
 .full-width-image-banner {
-    width: 100vw; /* Full viewport width */
+    width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     padding: 0;
-    height: 100px; /* Set the desired height */
-    overflow: hidden; /* Hide any overflowing parts of the image */
+    height: 100px; /* Your fixed height for the banner area */
+    overflow: hidden; /* Still good to have in case of unforeseen issues */
+    display: flex; /* Use flexbox for easy centering */
+    justify-content: center; /* Center image horizontally if narrower than banner */
+    align-items: center;     /* Center image vertically */
+    background-color: #f0f0f0; /* Optional: A light background color */
+                               /* This will show if your image doesn't fill the whole 100vw width */
+                               /* after scaling to fit the 100px height. Remove if not needed. */
 }
 
 .banner-image {
-    width: 100%; /* Make the image fill the width */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: contain; /* Ensure the whole image is visible and resize to fit within the 100px height. */
-    display: block; /* Removes any potential extra spacing below the image */
+    display: block; /* Removes extra space below image */
+    max-width: 100%;  /* Image will not exceed the banner's width */
+    max-height: 100%; /* Image will not exceed the banner's 100px height */
+    width: auto;      /* Let width adjust to maintain aspect ratio (driven by height) */
+    height: auto;     /* Let height adjust to maintain aspect ratio (driven by width) */
+    object-fit: contain; /* This is key: scales image down to fit, maintains aspect ratio */
 }
 
 /* --- START: Featured Slider Styles (Swiper) --- */
